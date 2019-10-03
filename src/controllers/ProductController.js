@@ -9,7 +9,15 @@ module.exports = {
     //Lista de todos os produtos do DB
     async index(req, res){
         //Produra produtos e armazena na variavel
-        const products = await Product.find()
+        //const products = await Product.find()
+
+        //Variavel que resgata o número da página dado na rota get
+        //=1; valor padrão é a página 1
+        // EX: http://localhost:3001/api/products?page=2
+        const { page = 1} = req.query
+        //Listagem de produtos com paginação
+        const products = await Product.paginate({}, { page, limit: 10})
+        //Lista com 10 produtos a cada página
 
         //Retorna lista de produtos em JSON
         return res.json(products)

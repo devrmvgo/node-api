@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+//Importa paginate (Paginação da listagem)
+const mongoosePaginate = require('mongoose-paginate')
 
 //Registrando model na aplicação
 const ProductSchema = new mongoose.Schema({
@@ -24,5 +26,7 @@ const ProductSchema = new mongoose.Schema({
 
 })
 
+//Paginação da listagem
+ProductSchema.plugin(mongoosePaginate)
 //Exporta o model
 mongoose.model('Product', ProductSchema)
