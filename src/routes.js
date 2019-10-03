@@ -17,5 +17,5 @@ routes.get('/', (req, res) => {
 })
 
 //Exporta as rotas
-module.exports= 'routes'
+module.exports= routes
 
